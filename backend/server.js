@@ -4,11 +4,13 @@ const jwt = require('jsonwebtoken'); // Gera o token para login
 
 const app = express();
 const PORT = 3000;
+const JWT_SECRET = "1234"; // Senha do segredo
 
 
 app.use(cors());
 app.use(express.json());
 
+// Simula um banco de dados
 const CREDENCIAIS_VALIDAS ={
     email: "ka@gmail.com",
     senha: "123"
@@ -38,6 +40,10 @@ app.get('/', (req, res) => {
             login: "POST/ login"
         }
     });
+});
+
+app.get('/api/dados', (req, res) => {
+    res.json({status: "Sucesso"});
 });
 
 // Fazer o server rodar
